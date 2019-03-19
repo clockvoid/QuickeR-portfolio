@@ -76,9 +76,9 @@ workflows:
               ignore:
                 gh-pages
       - build_and_deploy:
+          requires:
+            - npm_test
           filters:
-            requires:
-              - npm_test
             branches:
               only:
                 master
