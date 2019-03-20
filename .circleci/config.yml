@@ -43,7 +43,10 @@ jobs:
 
       - run:
           name: deploy
-          command: npm run deploy
+          command: |
+            git config --global user.email $GITHUB_EMAIL
+            git config --global user.name $GITHUB_NAME
+            npm run deploy
 
   npm_test:
     docker:
