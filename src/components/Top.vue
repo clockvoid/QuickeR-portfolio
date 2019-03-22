@@ -104,6 +104,8 @@ export default class Top extends Vue {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  box-shadow: 0px 0px;
+  -webkit-box-shadow: 0px 0px;
 }
 
 @media screen and (max-width: 320px) and (max-width: 480px) {
@@ -146,8 +148,25 @@ img {
 }
 
 #quicker {
-  font-size: 7em;
+  font-size: 7rem;
   font-weight: 400;
   font-family: 'Patua One', cursive;
+}
+
+@media screen and (max-width: 700px) {
+  #quicker {
+    font-size: 5rem;
+    font-weight: 400;
+    font-family: 'Patua One', cursive;
+  }
+
+  img {
+    margin-top: 2.5em;
+    height: 3em;
+  }
+
+  #appstore {
+    padding: 7px;
+  }
 }
 </style>
