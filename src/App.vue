@@ -1,6 +1,8 @@
 <template>
   <div id='app'>
     <Top />
+    <Description />
+    <Features />
   </div>
 </template>
 
@@ -8,14 +10,18 @@
 import { Component, Vue } from 'vue-property-decorator'
 import Top from './components/Top.vue'
 import Description from './components/Description.vue'
+import Features from './components/Features.vue'
 
 @Component({
   components: {
     Top,
-    Description
+    Description,
+    Features
   }
 })
-export default class App extends Vue {}
+
+export default class App extends Vue {
+}
 </script>
 
 <style lang="scss">
