@@ -1,28 +1,22 @@
 <template>
   <div class="feature-content">
     <div class="feature column is-8 is-offset-2">
-      <div class="columns is-vcentered body">
-        <div class="img-parent column is-3 is-offset-3">
-          <img class="feature-img" src="../assets/home.png" />
-        </div>
-        <div class="column is-6">
-          <div class="feature-description">
-            <font-awesome-icon icon="check" />
-              QRコードを一覧できます．
-              <div class="description-body">
-                はじめにアプリを開くとQRコードが表示されます．
-              </div>
-          </div>
-        </div>
-      </div>
+        <Feature title="QRコードを一覧できます．" body="はじめにアプリを開くとQRコードが表示されます．" :imageUrl="require('../assets/home.png')" />
+        <Feature title="サービスを一覧できます．" body="設定アイコンからサービスの一覧を開くことができます．" :imageUrl="require('../assets/services.png')" />
+        <Feature title="サービスを追加できます．" body="Twitter，Facebook，LINEに加えて自分で追加もできます．" :imageUrl="require('../assets/add.png')" />
+        <Feature title="QRコードの登録も簡単です．" body="QRコードが含まれている画像を選択するだけで自動的にクロッピングしてくれます．" :imageUrl="require('../assets/register.png')" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import Feature from '../components/Feature.vue'
 import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
+  components: {
+    Feature
+  }
 })
 
 export default class Featres extends Vue {}
