@@ -3,6 +3,8 @@
     <div class="feature column is-8 is-offset-2">
         <Feature title="QRコードを一覧できます．" body="はじめにアプリを開くとQRコードが表示されます．" :imageUrl="require('../assets/home.png')" />
         <Feature title="サービスを一覧できます．" body="設定アイコンからサービスの一覧を開くことができます．" :imageUrl="require('../assets/services.png')" />
+        <Feature title="サービスを追加できます．" body="Twitter，Facebook，LINEに加えて自分で追加もできます．" :imageUrl="require('../assets/add.png')" />
+        <Feature title="QRコードの登録も簡単です．" body="QRコードが含まれている画像を選択するだけで自動的にクロッピングしてくれます．" :imageUrl="require('../assets/register.png')" />
     </div>
   </div>
 </template>
