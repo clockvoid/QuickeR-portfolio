@@ -1,7 +1,7 @@
 <template>
   <div class="columns is-vcentered body">
     <div class="img-parent column is-3 is-offset-3">
-      <img class="feature-img" v-bind:src=imageUrl />
+      <img class="feature-img" v-bind:src="imageUrl" />
     </div>
     <div class="column is-6">
       <div class="feature-description">
