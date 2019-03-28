@@ -3,6 +3,7 @@
     <Top />
     <Description />
     <Features />
+    <Footer />
   </div>
 </template>
 
@@ -11,12 +12,14 @@ import { Component, Vue } from 'vue-property-decorator'
 import Top from './components/Top.vue'
 import Description from './components/Description.vue'
 import Features from './components/Features.vue'
+import Footer from './components/Footer.vue'
 
 @Component({
   components: {
     Top,
     Description,
-    Features
+    Features,
+    Footer
   }
 })
 
