@@ -12,7 +12,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    if: contains(github.event.comment.html\_url, '/pull/') && contains(github.event.comment.body, 'apk please')
+    if: contains(github.event.comment.html_url, '/pull/') && contains(github.event.comment.body, 'apk please')
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
