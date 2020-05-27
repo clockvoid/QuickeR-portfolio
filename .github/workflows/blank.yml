@@ -45,7 +45,7 @@ jobs:
 
       - name: make bitrise build
         run: |
-          curl -X POST -H "Content-Type: application/json" -d '{"hook_info": {"type": "bitrise","build_trigger_token": "${{ secrets.BUILD_TRIGGER_TOKEN }}" }, "build_params": { "branch": "${{ steps.upstreambranch.outputs.branchname }}", "workflow_id": "primary", "branch_dest": "${{ steps.basebranch.outputs.branchname }}", "pull_request_id": "${{ github.event.issue.number }}", "pull_request_repository_url": "${{ github.event.pull_request.url }}", "pull_request_merge_branch": "pull/${{ github.event.issue.number }}/merge", "pull_request_head_branch": "pull/${{ github.event.issue.number }}/head", "commit_hash": "${{ steps.commithash.outputs }}" }, "triggered_by": "curl"}' https://app.bitrise.io/app/${{ secrets.APP_SLUG }}/build/start.json
+          curl -X POST -H "Content-Type: application/json" -d '{"hook_info": {"type": "bitrise","build_trigger_token": "${{ secrets.BUILD_TRIGGER_TOKEN }}" }, "build_params": { "branch": "${{ steps.upstreambranch.outputs.branchname }}", "workflow_id": "primary", "branch_dest": "${{ steps.basebranch.outputs.branchname }}", "pull_request_id": "${{ github.event.issue.number }}", "pull_request_repository_url": "${{ github.repository }}", "pull_request_merge_branch": "pull/${{ github.event.issue.number }}/merge", "pull_request_head_branch": "pull/${{ github.event.issue.number }}/head", "commit_hash": "${{ github.event.issue.pull_request.head.sha }}" }, "triggered_by": "curl"}' https://app.bitrise.io/app/${{ secrets.APP_SLUG }}/build/start.json
 
       - name: echo upstream branch
         run: |
