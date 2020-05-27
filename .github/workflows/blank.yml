@@ -18,22 +18,35 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - name: Extract branch name
-      shell: bash
-      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-      id: extract_branch
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+          run: echo "$GITHUB_CONTEXT"
 
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-      with:
-        ref: eng:${{ steps.extract_branch.outputs.branch }}
+      - name: get pullrequest url
+        run: |
+          echo ${{ github.event.issue.pull_request.url }}
 
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: echo Hello, world!
+      - name: get upstream branch
+        id: upstreambranch
+        run: |
+          echo "::set-output name=branchname::$(curl -v -H "Accept: application/vnd.github.sailor-v-preview+json" -u ${{ secrets.PAT }} ${{ github.event.issue.pull_request.url }} | jq '.head.ref' | sed 's/\"//g')"
 
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+      - name: echo upstream branch
+        run: |
+          echo ${{ steps.upstreambranch.outputs.branchname }}
+
+      - name: Checkout upstream repo
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ steps.upstreambranch.outputs.branchname }}
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
